@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "Date": "2025-10-05",
+        "Category": "Food ",
+        "Amount": 50.75,
+        "Description": "Lunch"
+    },
+    {
+        "Date": "2025-10-06",
+        "Category": "Transport",
+        "Amount": 250.0,
+        "Description": "Taxi fare"
+    },
+    {
+        "Date": "2025-10-07",
+        "Category": "Groceries",
+        "Amount": 250.0,
+        "Description": "Weekly shopping"
+    }
+]
