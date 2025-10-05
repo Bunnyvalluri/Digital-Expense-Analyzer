@@ -53,4 +53,4 @@ expense-tracker/
 ---
 
 ##🙌 Author
-- Made with ❤️ by [V.Rahul]
+- Made with ❤️ by [Rahul]
