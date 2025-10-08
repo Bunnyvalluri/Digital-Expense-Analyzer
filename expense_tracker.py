@@ -115,7 +115,7 @@ def filter_expenses():
 initialize_file()
 root = tk.Tk()
 root.title("💸 Expense Tracker")
-root.geometry("900x600")
+root.geometry("1000x650")
 root.configure(bg="#f0f4f7")
 
 style = ttk.Style()
@@ -125,46 +125,46 @@ style.configure("Treeview", font=("Helvetica", 11), rowheight=25)
 style.configure("TButton", font=("Helvetica", 11), padding=6)
 
 # Header
-header = tk.Label(root, text="Expense Tracker", font=("Helvetica", 20, "bold"), bg="#f0f4f7", fg="#2c3e50")
+header = tk.Label(root, text="💸 Expense Tracker", font=("Helvetica", 24, "bold"), bg="#f0f4f7", fg="#2c3e50")
 header.pack(pady=10)
 
 # Form Frame
-form_frame = tk.Frame(root, bg="#f0f4f7")
-form_frame.pack(pady=10)
+form_frame = tk.LabelFrame(root, text="Add / Edit Expense", font=("Helvetica", 12, "bold"), bg="#f0f4f7", padx=10, pady=10)
+form_frame.pack(fill="x", padx=20, pady=10)
 
 labels = ["Date (YYYY-MM-DD)", "Category", "Amount", "Description"]
 entries = []
 for i, label in enumerate(labels):
-    tk.Label(form_frame, text=label, font=("Helvetica", 11), bg="#f0f4f7").grid(row=0, column=i, padx=5)
-    entry = tk.Entry(form_frame, font=("Helvetica", 11), width=15)
-    entry.grid(row=1, column=i, padx=5)
+    tk.Label(form_frame, text=label, font=("Helvetica", 11), bg="#f0f4f7").grid(row=0, column=i, padx=5, pady=5)
+    entry = tk.Entry(form_frame, font=("Helvetica", 11), width=18)
+    entry.grid(row=1, column=i, padx=5, pady=5)
     entries.append(entry)
 
 date_entry, category_entry, amount_entry, description_entry = entries
-ttk.Button(form_frame, text="Add Expense", command=add_expense).grid(row=1, column=4, padx=10)
+ttk.Button(form_frame, text="➕ Add Expense", command=add_expense).grid(row=1, column=4, padx=10, pady=5)
 
 # Table Frame
-table_frame = tk.Frame(root)
-table_frame.pack(pady=10)
+table_frame = tk.LabelFrame(root, text="Expense Records", font=("Helvetica", 12, "bold"), bg="#f0f4f7", padx=10, pady=10)
+table_frame.pack(fill="both", expand=True, padx=20, pady=10)
 
 columns = ("Date", "Category", "Amount", "Description")
 tree = ttk.Treeview(table_frame, columns=columns, show='headings')
 for col in columns:
     tree.heading(col, text=col)
-    tree.column(col, width=180)
-tree.pack()
+    tree.column(col, anchor="center")
+tree.pack(fill="both", expand=True)
 
 # Action Frame
-action_frame = tk.Frame(root, bg="#f0f4f7")
-action_frame.pack(pady=20)
+action_frame = tk.LabelFrame(root, text="Actions", font=("Helvetica", 12, "bold"), bg="#f0f4f7", padx=10, pady=10)
+action_frame.pack(fill="x", padx=20, pady=10)
 
-ttk.Button(action_frame, text="✏️ Update Selected", command=update_expense).pack(side=tk.LEFT, padx=10)
-ttk.Button(action_frame, text="🗑️ Delete Selected", command=delete_expense).pack(side=tk.LEFT, padx=10)
-ttk.Button(action_frame, text="📊 View Report", command=view_report).pack(side=tk.LEFT, padx=10)
+ttk.Button(action_frame, text="✏️ Update Selected", command=update_expense).grid(row=0, column=0, padx=10, pady=5)
+ttk.Button(action_frame, text="🗑️ Delete Selected", command=delete_expense).grid(row=0, column=1, padx=10, pady=5)
+ttk.Button(action_frame, text="📊 View Report", command=view_report).grid(row=0, column=2, padx=10, pady=5)
 
-search_entry = tk.Entry(action_frame, font=("Helvetica", 11), width=20)
-search_entry.pack(side=tk.LEFT, padx=10)
-ttk.Button(action_frame, text="🔍 Filter", command=filter_expenses).pack(side=tk.LEFT, padx=10)
+search_entry = tk.Entry(action_frame, font=("Helvetica", 11), width=25)
+search_entry.grid(row=0, column=3, padx=10, pady=5)
+ttk.Button(action_frame, text="🔍 Filter", command=filter_expenses).grid(row=0, column=4, padx=10, pady=5)
 
 refresh_table()
 root.mainloop()
